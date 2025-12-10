@@ -10,7 +10,8 @@ const Page = () => {
         <>
             <HeroSub
                 title="About Us"
-                imageSrc="/aboutus/about-us-banner.jpg"
+                // imageSrc="/aboutus/about-us-banner.jpg"
+                imageSrc="/aboutus/about-us-banner-1.png"
             />
             <AboutUsDetails />
         </>

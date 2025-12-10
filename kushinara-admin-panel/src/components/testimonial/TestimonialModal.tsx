@@ -1,9 +1,9 @@
 "use client";
-
 import { useState } from "react";
 import ImageUploader from "../common/ImageUploader";
 import { X } from "lucide-react";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function TestimonialModal({ mode, onClose, onSave, initialData }: any) {
     const [form, setForm] = useState(
         initialData || {
@@ -15,6 +15,7 @@ export default function TestimonialModal({ mode, onClose, onSave, initialData }:
         }
     );
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleChange = (e: any) =>
         setForm({ ...form, [e.target.name]: e.target.value });
 

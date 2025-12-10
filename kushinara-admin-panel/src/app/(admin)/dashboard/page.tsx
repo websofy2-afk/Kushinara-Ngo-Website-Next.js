@@ -1,7 +1,4 @@
-
-
 import Chart from "../../../components/charts/Chart";
-
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

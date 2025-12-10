@@ -13,7 +13,7 @@ const AboutUs: React.FC = () => {
 
   return (
     <section
-      className="w-full flex flex-col items-center justify-center bg-cardbg py-16 px-6 md:px-12"
+      className="w-full flex flex-col items-center justify-center bg-cardbg py-8 sm:py-20 px-6 md:px-12"
       data-aos="fade-up"
     >
       <h1

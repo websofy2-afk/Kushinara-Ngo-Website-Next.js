@@ -51,8 +51,8 @@ const Header: React.FC = () => {
   return (
     <header className={`fixed bg-white top-0 z-50 w-full transition-all ${sticky ? "shadow-lg" : "shadow-none"}`}>
       <div className="sm:bg-linear-to-r bg-linear-to-l md:from-primary md:to-secondary lg:py-0 py-2">
-        <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) flex items-center justify-between px-4">
-          <div className="lg:hidden block ">
+        <div className="container  mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) flex items-center justify-between px-4">
+          <div className="lg:hidden block">
             <Logo />
           </div>
           <nav className="hidden lg:flex grow items-center justify-start">

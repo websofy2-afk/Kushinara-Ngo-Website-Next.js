@@ -42,7 +42,6 @@ const Footer: FC = () => {
                     </p>
                   </div>
                 </div>
-
               </div>
 
               <div className="flex items-center mb-4 gap-4">

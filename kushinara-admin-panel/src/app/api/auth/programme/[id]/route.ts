@@ -20,7 +20,9 @@ export async function GET(req: Request, context: RouteContext) {
             );
         }
         return NextResponse.json({ success: true, data: programme });
-    } catch (error: any) {
+    } 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (error: any) {
         return NextResponse.json(
             { success: false, message: error.message },
             { status: 500 }
@@ -49,10 +51,10 @@ export async function PUT(req: Request, context: RouteContext) {
             new: true,
             runValidators: true,
         });
-
-       
         return NextResponse.json({ success: true, data: updated, message: "Programme updated successfully." });
-    } catch (error: any) {
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     catch (error: any) {
         return NextResponse.json(
             { success: false, message: error.message },
             { status: 500 }
@@ -63,7 +65,6 @@ export async function PUT(req: Request, context: RouteContext) {
 export async function DELETE(req: Request, context: RouteContext) {
     await dbConnect();
     const { id } = await context.params;
-
     try {
         const existingProgramme = await Programme.findById(id);
          if (!existingProgramme) {
@@ -76,9 +77,10 @@ export async function DELETE(req: Request, context: RouteContext) {
             cloudinaryImageDestroy(existingProgramme.public_Id)
         }
         await Programme.findByIdAndDelete(id);
-       
         return NextResponse.json({ success: true, message: "Programme deleted successfully." });
-    } catch (error: any) {
+    } 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (error: any) {
         return NextResponse.json(
             { success: false, message: error.message },
             { status: 500 }

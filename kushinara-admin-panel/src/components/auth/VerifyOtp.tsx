@@ -1,9 +1,10 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import { BallTriangle } from "react-loader-spinner";
 
-export default function VerifyOtpPage() {
+function VerifyOtpPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email");
@@ -16,10 +17,13 @@ export default function VerifyOtpPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, otp }),
     });
+
     const data = await res.json();
+
     if (res.ok) router.push("/signin");
     else alert(data.message);
   };
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <form
@@ -34,6 +38,7 @@ export default function VerifyOtpPage() {
           value={otp}
           onChange={(e) => setOtp(e.target.value)}
         />
+
         <button
           type="submit"
           className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
@@ -42,5 +47,24 @@ export default function VerifyOtpPage() {
         </button>
       </form>
     </div>
+  );
+}
+
+export default function VerifyOtpPage() {
+  return (
+    <Suspense fallback={<div className="flex h-screen items-center justify-center">
+      <BallTriangle
+        height={100}
+        width={100}
+        radius={5}
+        color="#FF00D4"
+        ariaLabel="ball-triangle-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+      />
+    </div>}>
+      <VerifyOtpPageContent />
+    </Suspense>
   );
 }

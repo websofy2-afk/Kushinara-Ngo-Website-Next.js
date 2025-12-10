@@ -7,8 +7,11 @@ import Tooltip from "../common/Tooltip";
 import Pagination from "../common/Pagination";
 
 export default function Programme() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [modal, setModal] = useState<{ mode: string; item?: any } | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
     null
   );
@@ -45,9 +48,12 @@ export default function Programme() {
     (currentPage - 1) * recordsPerPage,
     currentPage * recordsPerPage
   );
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSave = async (form: any) => {
     if (!modal) return;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let res: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let data: any = null;
     try {
       if (modal.mode === "create") {
@@ -75,6 +81,7 @@ export default function Programme() {
         showTooltip(data.message || "Something went wrong", "error");
       }
     } catch (error) {
+      console.log("Internal Server Error " , error)
       showTooltip("Internal Server Error", "error");
     } finally {
       setModal(null);
@@ -99,6 +106,7 @@ export default function Programme() {
             type="text"
             placeholder={`Search by ${key}`}
             className="border px-2 py-1 rounded"
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             value={(search as any)[key]}
             onChange={(e) => setSearch({ ...search, [key]: e.target.value })}
           />

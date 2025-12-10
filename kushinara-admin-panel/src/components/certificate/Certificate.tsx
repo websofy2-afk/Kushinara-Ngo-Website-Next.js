@@ -7,10 +7,12 @@ import Link from "next/link";
 export default function Certificate() {
   const [file, setFile] = useState<File | null>(null);
   const [title, setTitle] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [pdfs, setPdfs] = useState<any[]>([]);
   const [editId, setEditId] = useState<string | null>(null);
   const [viewPdf, setViewPdf] = useState<string | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(null);
 
   const fetchPdfs = async () => {
@@ -87,7 +89,10 @@ export default function Certificate() {
           const existingFile = new File([blob], existingPdf.filename, { type: blob.type });
           formData.append("file", existingFile);
         }
-      } catch (error) {
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+       catch (error) {
+        console.log("Internal server error ", error)
         return showTooltip("Failed to fetch existing file for update", "error");
       }
     }

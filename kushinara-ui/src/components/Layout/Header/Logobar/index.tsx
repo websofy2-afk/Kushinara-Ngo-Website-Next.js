@@ -8,12 +8,15 @@ import { Icon } from '@iconify/react/dist/iconify.js'
 const LogoBar = () => {
   const info = useContext(DonationFormContext);
   const donationInfo = useContext(DonationFormContext);
+
+  
   return (
     <div>
-      <div className="px-4 container lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) sm:flex lg:justify-between justify-center py-5 hidden">
-        <div className="lg:block hidden ">
+      <div className="px-4 container bg-white lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) sm:flex lg:justify-between justify-center py-5 hidden">
+        <div className="lg:block hidden">
           <Logo />
         </div>
+
         <div className="flex items-center">
           <div className="flex gap-3 py-2 pr-6 border-r justify-center items-center ">
             <Icon

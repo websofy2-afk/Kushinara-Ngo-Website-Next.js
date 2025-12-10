@@ -8,9 +8,11 @@ import Tooltip from "@/components/common/Tooltip";
 import Pagination from "@/components/common/Pagination";
 
 export default function Photo() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [modal, setModal] = useState<{ mode: string; item?: any } | null>(null);
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
     null
   );
@@ -22,7 +24,6 @@ export default function Photo() {
     setTooltip({ message, type });
     setTimeout(() => setTooltip(null), 3000);
   };
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 10;
 
@@ -51,9 +52,12 @@ export default function Photo() {
     currentPage * recordsPerPage
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSave = async (form: any) => {
     if (!modal) return;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let res: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let data: any = null;
     try {
       if (modal.mode === "create") {
@@ -74,21 +78,19 @@ export default function Photo() {
         });
       }
       data = await res.json();
-      console.log("Data is --> ", data)
       if (res.ok) {
         showTooltip(data?.message, "success");
       } else {
         showTooltip(data.message || "Something went wrong", "error");
       }
     } catch (error) {
+      console.log("Internal Server Error", error)
       showTooltip("Internal Server Error", "error");
     } finally {
       setModal(null);
       fetchData();
     }
   };
-
-
 
   return (
     <div >
@@ -99,7 +101,6 @@ export default function Photo() {
           + Upload Photo
         </button>
       </div>
-      {/* Search/Filter */}
       <div className="flex gap-3 mb-4">
         {["title"].map((key) => (
           <input
@@ -107,20 +108,16 @@ export default function Photo() {
             type="text"
             placeholder={`Search by ${key}`}
             className="border px-2 py-1 rounded"
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             value={(search as any)[key]}
             onChange={(e) => setSearch({ ...search, [key]: e.target.value })}
           />
         ))}
       </div>
 
-      {/* Table */}
-
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-
         {
-
           currentData.map((item) => (
-
             <div key={item._id} className="bg-gray-100 h-full  border border-gray-200 rounded-xl">
               <Image
                 src={item.image}
@@ -147,7 +144,7 @@ export default function Photo() {
           ))
         }
       </div>
-       <Pagination
+      <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={setCurrentPage}

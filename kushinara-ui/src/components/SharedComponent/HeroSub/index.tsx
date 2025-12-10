@@ -19,7 +19,7 @@ const HeroSub: FC<HeroSubProps> = ({ title, description, imageSrc }) => {
 
     return (
         <>
-            <section className="relative lg:mt-40 h-60 sm:mt-44 mt-20">
+            <section className="relative lg:mt-[156px] h-36 sm:h-72 sm:mt-10 mt-16">
                 <div className="absolute inset-0 w-full h-full">
                     {
                         imgSrc &&
@@ -27,13 +27,12 @@ const HeroSub: FC<HeroSubProps> = ({ title, description, imageSrc }) => {
                             src={imgSrc}
                             alt={`Banner of ${title}`}
                             fill
-                            className="object-cover"
+                            // className="object-center"    
                             priority
                         />
                     }
-
                 </div>
-                <div className="absolute inset-0 bg-black/30"></div>
+                {/* <div className="absolute inset-0 bg-black/30"></div> */}
                 <div className="relative container mx-auto lg:max-w-[--breakpoint-xl] px-4 h-full flex flex-col justify-center">
                     <h2
                         className="text-white md:text-6xl text-4xl font-medium"

@@ -18,7 +18,9 @@ export async function POST(req: Request) {
     await dbConnect();
     const newEvent = await Programme.create({ title, text, detail, image, duration, category, date, location, type, public_Id});
     return NextResponse.json({message: "Programme created successfully.", success: true, data: newEvent });
-  } catch (err:any) {
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   catch (err:any) {
     console.error("Error creating event:", err);
     return NextResponse.json({ success: false, message: err.message }, { status: 500 });
   }

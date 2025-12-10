@@ -1,5 +1,4 @@
 "use client";
-import Checkbox from "@/components/form/input/Checkbox";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
 import Button from "@/components/ui/button/Button";
@@ -18,8 +17,7 @@ export default function SignInForm() {
   })
   const [showPassword, setShowPassword] = useState(false);
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
-
-  const [isChecked, setIsChecked] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
     null
   );
@@ -108,14 +106,6 @@ export default function SignInForm() {
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-
-
-                  {/* <div className="flex items-center gap-3">
-                    <Checkbox checked={isChecked} onChange={setIsChecked} />
-                    <span className="block font-normal text-gray-700 text-theme-sm">
-                      Keep me logged in
-                    </span>
-                  </div> */}
 
                   <Link
                     href="/reset-password"

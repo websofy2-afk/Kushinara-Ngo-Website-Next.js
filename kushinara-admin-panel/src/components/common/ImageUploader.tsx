@@ -1,5 +1,4 @@
 "use client";
-
 import { useRef, useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import Cropper from "react-easy-crop";
@@ -23,6 +22,7 @@ const createImage = (url: string): Promise<HTMLImageElement> => {
   });
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getCroppedImg = async (imageSrc: string, crop: any) => {
   const image = await createImage(imageSrc);
   const canvas = document.createElement("canvas");
@@ -60,6 +60,7 @@ export default function ImageUploader({
   const [loading, setLoading] = useState(false);
   const [cropMode, setCropMode] = useState(false);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<any>(null);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -70,6 +71,7 @@ export default function ImageUploader({
     if (defaultPreview) setPreview(defaultPreview);
   }, [defaultPreview]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onCropComplete = useCallback((_a: any, croppedPixels: any) => {
     setCroppedAreaPixels(croppedPixels);
   }, []);

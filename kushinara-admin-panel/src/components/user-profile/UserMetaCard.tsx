@@ -28,6 +28,7 @@ export default function UserMetaCard() {
   const [loading, setLoading] = useState(false)
   const [user, setUser] = useState<User | null>(null);
   const [mode, setMode] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
     null
   );
@@ -119,6 +120,7 @@ export default function UserMetaCard() {
     setFormData(prev => ({ ...prev, [name]: value } as User));
   };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSaveProfile = async (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -150,6 +152,7 @@ export default function UserMetaCard() {
         showTooltip(data.error || "Update failed", "error");
       }
     } catch (e) {
+      console.log("Internal Server Error ", e)
       showTooltip("Internal Server Error", "error");
     } finally {
       setTimeout(() => {
@@ -160,10 +163,11 @@ export default function UserMetaCard() {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handlePasswordChange = (e: any) => {
     setUpdateCredentials(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSavePassword = async (e: any) => {
     e.preventDefault();
 
@@ -197,7 +201,10 @@ export default function UserMetaCard() {
       } else {
         showTooltip(data.message || "Something went wrong", "error");
       }
-    } catch (error) {
+    } 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    catch (error) {
+      console.log("Internal Server Error ", error)
       showTooltip("Internal Server Error", "error");
     } finally {
       setTimeout(() => {

@@ -1,14 +1,15 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import PageBreadcrumb from "../common/PageBreadCrumb";
 import EventModel from "./EventModel";
 import Tooltip from "../common/Tooltip";
 
 export default function Event() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [modal, setModal] = useState<{ mode: string; item?: any } | null>(null);
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
     null
   );
@@ -21,7 +22,6 @@ export default function Event() {
     setTimeout(() => setTooltip(null), 3000);
   };
 
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 10;
 
@@ -49,10 +49,14 @@ export default function Event() {
     currentPage * recordsPerPage
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSave = async (form: any) => {
     if (!modal) return;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let res: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let data: any = null;
+
     try {
       if (modal.mode === "create") {
         res = await fetch("/api/auth/event", {
@@ -77,7 +81,10 @@ export default function Event() {
       } else {
         showTooltip(data.message || "Something went wrong", "error");
       }
-    } catch (error) {
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     catch (error) {
+      console.log("Internal Server Error ", error)
       showTooltip("Internal Server Error", "error");
     } finally {
       setModal(null);
@@ -102,6 +109,7 @@ export default function Event() {
             type="text"
             placeholder={`Search by ${key}`}
             className="border px-2 py-1 rounded"
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             value={(search as any)[key]}
             onChange={(e) => setSearch({ ...search, [key]: e.target.value })}
           />

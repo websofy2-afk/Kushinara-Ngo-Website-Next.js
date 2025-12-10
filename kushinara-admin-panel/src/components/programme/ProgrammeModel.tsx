@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ImageUploader from "../common/ImageUploader";
 import { X } from "lucide-react";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function ProgrammeModal({ mode, onClose, onSave, initialData }: any) {
   const [form, setForm] = useState(initialData ||
   {
@@ -19,7 +20,7 @@ export default function ProgrammeModal({ mode, onClose, onSave, initialData }: a
     public_Id: ""
   });
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (e: any) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 

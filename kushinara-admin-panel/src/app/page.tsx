@@ -18,7 +18,6 @@ export default function HomePage() {
         if (token) {
           router.push("/signin");
         } else {
-          // router.push("/signup");
           router.push("/signin");
         }
       }, 2000);

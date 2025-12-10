@@ -9,7 +9,9 @@ export default function VideoModal({
   onSave,
   initialData,
   loading,
-}: any) {
+}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+: any) {
   const [form, setForm] = useState(
     initialData || { title: "", subtitle: "", video: "" }
   );
@@ -18,10 +20,10 @@ export default function VideoModal({
   const [previewType, setPreviewType] = useState<"youtube" | "video" | null>(
     null
   );
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setForm((prev: any) => ({
       ...prev,
       [name]: value,

@@ -21,10 +21,10 @@ export default function ResetPassword() {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
         null
     );
-
     const showTooltip = (
         message: string,
         type: "success" | "error" | "info" = "info"

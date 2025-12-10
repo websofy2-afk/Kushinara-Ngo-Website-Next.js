@@ -1,11 +1,11 @@
 "use client";
-
 import { useEffect, useState, useMemo } from "react";
 import { ArrowUpDown } from "lucide-react";
 import { ColorRing } from "react-loader-spinner";
 import PageBreadcrumb from "../common/PageBreadCrumb";
 
 export default function DonationRecords() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [donations, setDonations] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,6 +32,7 @@ export default function DonationRecords() {
     fetchDonations();
   }, []);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getFieldValue = (item: any, field: "name" | "phone" | "email" | "amount") => {
     switch (field) {
       case "name":
@@ -53,7 +54,7 @@ export default function DonationRecords() {
 
   const filteredData = useMemo(() => {
     const term = searchTerm.trim().toLowerCase();
-    let filtered = donations.filter((d) => {
+    const filtered = donations.filter((d) => {
       const email = String(d.email ?? "").toLowerCase();
       const phone = String(d.phoneNumber ?? "");
       const txn = String(d.transactionId ?? "");

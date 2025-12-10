@@ -8,8 +8,11 @@ import { getEmbedUrl } from "@/lib/getEmbedUrl";
 import Pagination from "@/components/common/Pagination";
 
 export default function Video() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [modal, setModal] = useState<{ mode: string; item?: any } | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(
     null
   );
@@ -46,12 +49,12 @@ export default function Video() {
     (currentPage - 1) * recordsPerPage,
     currentPage * recordsPerPage
   );
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSave = async (form: any) => {
     if (!modal) return;
     setloading(true);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let res: any = null;
-
     try {
       if (modal.mode === "create") {
         res = await fetch("/api/auth/gallery/video", {
@@ -75,6 +78,7 @@ export default function Video() {
       if (res.ok) showTooltip(data?.message, "success");
       else showTooltip(data.message || "Something went wrong", "error");
     } catch (error) {
+      console.log("Internal Server Error ", error)
       showTooltip("Internal Server Error", "error");
     } finally {
       setloading(false);

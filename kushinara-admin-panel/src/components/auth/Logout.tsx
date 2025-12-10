@@ -5,10 +5,9 @@ import Tooltip from '../common/Tooltip';
 import { BallTriangle } from 'react-loader-spinner';
 
 const Logout = () => {
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [tooltip, setTooltip] = useState<{ message: string; type: any } | null>(null);
     const router = useRouter();
-
     const showTooltip = (
         message: string,
         type: "success" | "error" | "info" = "info"
@@ -27,11 +26,12 @@ const Logout = () => {
                 }, 1000)
                 showTooltip(data.message, "success");
             }
-        } catch (err: any) {
+        }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+         catch (err: any) {
             showTooltip(err, "success");
         }
     };
-
     useEffect(() => {
         handleLogout()
     }, [])

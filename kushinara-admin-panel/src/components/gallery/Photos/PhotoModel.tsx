@@ -1,14 +1,12 @@
 "use client";
-
 import ImageUploader from "@/components/common/ImageUploader";
 import { X } from "lucide-react";
 import { useState } from "react";
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function PhotoModal({ mode, onClose, onSave, initialData }: any) {
-
     const [form, setForm] = useState(initialData || { title: "", subtitle: "", image: "", public_Id: "" });
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleChange = (e: any) => setForm({ ...form, [e.target.name]: e.target.value });
 
     const handleSubmit = () => {
